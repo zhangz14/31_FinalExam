@@ -2,9 +2,9 @@
 Final exam, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  May 2018.
+         their colleagues and Zikang Zhang.  May 2018.
 
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 import time
@@ -74,7 +74,7 @@ def problem3(point, circle1, circle2, window):
             -- one from the center of circle1 to the center of circle2
             -- one from the center of circle2 to the given rg.Point
          where the color of each of those lines is the same color
-         as the fill color of circle2.
+         as the fill color of circle1.
       -- Then draws 3 more rg.Lines:
             -- one from the midpoint of the 1st line above
                  to the midpoint of the 2nd line above
@@ -93,9 +93,33 @@ def problem3(point, circle1, circle2, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
+    point.attach_to(window)
+    circle1.attach_to(window)
+    circle2.attach_to(window)
+    window.render()
+    line1 = rg.Line(point, circle1.center)
+    line2 = rg.Line(circle1.center, circle2.center)
+    line3 = rg.Line(circle2.center, point)
+    line1.color = circle1.fill_color
+    line2.color = circle1.fill_color
+    line3.color = circle1.fill_color
+    line1.attach_to(window)
+    line2.attach_to(window)
+    line3.attach_to(window)
+    window.render()
+    line4 = rg.Line(line1.get_midpoint(), line2.get_midpoint())
+    line5 = rg.Line(line2.get_midpoint(), line3.get_midpoint())
+    line6 = rg.Line(line3.get_midpoint(), line1.get_midpoint())
+    line4.color = circle2.fill_color
+    line5.color = circle2.fill_color
+    line6.color = circle2.fill_color
+    line4.attach_to(window)
+    line5.attach_to(window)
+    line6.attach_to(window)
+    window.render()
 
 
 # -----------------------------------------------------------------------------
