@@ -2,8 +2,8 @@
 Final exam, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zikang Zhang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -87,6 +87,19 @@ And this one for n=14:
     #   print Xs for the spaces until you figure out where the problem is
     #   (and then change the Xs back to spaces).
     # ------------------------------------------------------------------
+    string1 = '1234567890'
+    string2 = ''
+    string3 = ' '
+    for k in range(n):
+        if k <= 9:
+            string2 = string2 + string1[k]
+        if k > 9:
+            repeated_times = k // 10
+            string2 = string2 + string1[k - 10 * repeated_times]
+
+    part1 = string3 * 13 + string2[0]
+    part2 = '*' * 2
+    print(part1, part2)
 
 
 # ----------------------------------------------------------------------
